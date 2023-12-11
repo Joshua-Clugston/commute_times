@@ -65,3 +65,13 @@ While I had all of these tables, I wanted to combine every table from each categ
 This took a while. I took the approach of using the string replace method for every phrase I wanted to replace (which sounds nice, but it quickly became tedious). I ended up using the sub regular expressions method for one specific thing since replace wasn't cutting it. If I had to do this part over, I would definitely use regex for as much as possible.
 
 Still, I finally was able to line up all the column names and put everything into one table to send to PostgreSQL. Now, I could finally tackle some of the questions I was wondering about in an easy and straightforward approach.
+
+#### Thought I was done yet?
+After loading the tables into SQL, I came across something odd. There were a few values that said the median age of county workers was 23,658. Obviously, this is incorrect, and so I figured that there was an aggregation that went wrong (namely, a sum happening instead of an average). So now I had to track down this issue!
+
+The only time this issue occurred was whenever the year was 2018, so I knew I had to focus on that original table to see what was up. After looking and some trial and error, here's what was up:
+    1. There was a column called "Workers 16 and over who did not work *at* home" (emphasis added on "at"). This is a problem because the tables after 2018 use "from" and not "at."
+    2. The order of the columns was quite silly. It had the total travel times together at the beginning, but then cycled through the other subcategories at the end, tagging the mean/median columns at the end of the dataframe. 
+Before 2018, the subcategories cycled consistently, which made it easy. After 2018, each subcategory was grouped, which was also easy. The fact 2018 couldn't make up its mind was the source of the issue. I'm not sure what happened in 2018, but the way the data was collected had an impact on how this data was cleaned.
+
+Well, it was after working on this, I made another shocking discovery: *every table has a column for workers who don't work at home!* Before 2019, it always used "at" and since 2019 it uses "from"! This minute detail has messed with me for a very long time: I was under the impression they didn't keep track of that until 2019, but I was very wrong. So after fixing some of that code, I now have the data in a good spot.
