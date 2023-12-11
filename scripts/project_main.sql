@@ -1,17 +1,10 @@
 SELECT *
-FROM comm_2010;
+FROM age;
 
-SELECT county, pub_transit
-FROM comm_2010
-ORDER BY pub_transit DESC;
-
-SELECT state, pub_transit
-FROM (SELECT state, SUM(pub_transit) AS pub_transit FROM comm_2010 GROUP BY state) AS states
-ORDER BY pub_transit DESC;
-
-SELECT *
-FROM age_2010;
-
-SELECT state, age_16_19
-FROM (SELECT state, SUM(age_16_19) AS age_16_19 FROM age_2010 GROUP BY state) AS states
-ORDER BY age_16_19 DESC;
+SELECT county, state,
+	   SUM(workers) AS workers, SUM(drove_alone) AS drove_alone,
+	   SUM(carpooled) AS carpooled, SUM(pub_transit) AS pub_transit
+FROM age
+WHERE year = 2016
+GROUP BY county, state
+ORDER BY workers DESC;
