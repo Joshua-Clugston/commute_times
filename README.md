@@ -81,4 +81,8 @@ Well, it was after working on this, I made another shocking discovery: *every ta
 #### SQL Findings
 Finally, after much work, I could start answering some questions. Some of my EDA involved looking at my home county and seeing what the data was for each year and what the average of all years looked like. From there, I saw what the average values were for all columns over all years.
 
-Another question I asked myself is a debate I had with one of my mathematics teachers: Is traffic worse in DC or Nasvhille? Since we both had experience with traffic in both cities, we usually discussed which one was worse, although we never quite agreed. But with this data in hand, I decided to see what the numbers were for "District of Columbia" and "Davison County, Tennessee." And as it turns out, DC has higher commute times overall, so I guess that answers the question (I had argued that Nashville was worse, but the truth stings sometimes).
+Another question I asked myself was a debate I had with one of my mathematics professors: Is traffic worse in DC or Nasvhille? Since we both had experience with traffic in both cities, we usually discussed which one was worse, although we never quite agreed. But with this data in hand, I decided to see what the numbers were for "District of Columbia" and "Davison County, Tennessee." And as it turns out, DC has higher commute times overall, so I guess that answers the question (I had argued that Nashville was worse, but the truth stings sometimes).
+
+After this, I grouped the data by county and determined the average commute time for each mode of transportation (as well as overall average commute time for the county). I was looking through to look for patterns, but I figured it would be easier to use Python to find correlations. With that in mind, I jumped back to Python to see what I could do.
+
+#### Python Findings
