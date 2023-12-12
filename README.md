@@ -50,7 +50,7 @@ The first major roadblock I came across was how the data was shown. It gave most
 
 In order to find a way around this, I found the work force size for each county (which was already present in the original dataset) and used those numbers to multiply to the percentages, giving me a raw number of how many people were taking which mode of transportation.
 
-Now, this procedure had only been done on one dataset (the one from 2021), but now I needed to do it on every dataset. So, I created a function to do the whole process in one go.. except I soon realized that there was a clear distinction between table before and after 2018. The order of the columns and how they were named differed, so I needed to account for that in my function. After much hassle, I got it to work.
+Now, this procedure had only been done on one dataset (the one from 2021), but now I needed to do it on every dataset. So, I created a function to do the whole process in one go... except I soon realized that there was a clear distinction between table before and after 2018. The order of the columns and how they were named differed, so I needed to account for that in my function. After much hassle, I got it to work.
 
 So with cleaned-up commute time tables, how hard could another category be?
 
@@ -75,3 +75,10 @@ The only time this issue occurred was whenever the year was 2018, so I knew I ha
 Before 2018, the subcategories cycled consistently, which made it easy. After 2018, each subcategory was grouped, which was also easy. The fact 2018 couldn't make up its mind was the source of the issue. I'm not sure what happened in 2018, but the way the data was collected had an impact on how this data was cleaned.
 
 Well, it was after working on this, I made another shocking discovery: *every table has a column for workers who don't work at home!* Before 2019, it always used "at" and since 2019 it uses "from"! This minute detail has messed with me for a very long time: I was under the impression they didn't keep track of that until 2019, but I was very wrong. So after fixing some of that code, I now have the data in a good spot.
+
+### Analysis
+
+#### SQL Findings
+Finally, after much work, I could start answering some questions. Some of my EDA involved looking at my home county and seeing what the data was for each year and what the average of all years looked like. From there, I saw what the average values were for all columns over all years.
+
+Another question I asked myself is a debate I had with one of my mathematics teachers: Is traffic worse in DC or Nasvhille? Since we both had experience with traffic in both cities, we usually discussed which one was worse, although we never quite agreed. But with this data in hand, I decided to see what the numbers were for "District of Columbia" and "Davison County, Tennessee." And as it turns out, DC has higher commute times overall, so I guess that answers the question (I had argued that Nashville was worse, but the truth stings sometimes).
