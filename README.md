@@ -1,4 +1,5 @@
 # commute_times
+Using data from 2010 through 2022 to determine patterns in travel times to work.
 
 ## Executive Summary
 Traffic is something everyone has encountered, but are there any patterns to how long traveling takes? While traffic is far from optimized in the US, I wanted to investigate if any factors make traffic and commute times better or worse in certain areas. In addition, I also wanted to assess any correlations between commute time and other aspects of a county/state. Data can include (but is not limited to) geospatial data, count of objects by county, population trends, and government provided datasets. I will only be looking at US data as that is my primary focus. Anticipated challenges include loading sufficient data into a legible map, creating filters by time frame, and organizing/cleaning the data to be used.
