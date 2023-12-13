@@ -87,3 +87,8 @@ Another question I asked myself was a debate I had with one of my mathematics pr
 After this, I grouped the data by county and determined the average commute time for each mode of transportation (as well as overall average commute time for the county). I was looking through to look for patterns, but I figured it would be easier to use Python to find correlations. With that in mind, I jumped back to Python to see what I could do.
 
 #### Python Findings
+I started with trying to see if there was a correlation with age and commute time. I did this by selecting the age range columns along with the mean travel time column. I then created a correlation heatmap and... there wasn't a clear pattern.
+
+I then decided to take the age range of every mode of transportation and correlate it with the mean travel time, but there still wasn't any pattern. From this, I noted that there doesn't seem to be any correlation between the someone's age and the time it takes for them to get to work.
+
+In order to look for other patterns, I grouped the data by year and made a few charts. From these, it was clear to see that the travel time for public transit was consistently higher than every other mode of transportation every single year. Public transit also had the most varying median age of people who used it. Overall, public transit is the black sheep of the modes of transportation. It definitely deserves to be explored a little more.
