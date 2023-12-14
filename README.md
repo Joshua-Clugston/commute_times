@@ -38,6 +38,8 @@ May need to web-scrape some data from specific sites (namely the roundabouts sit
 
 
 
+
+
 ## Process
 
 ### Cleaning
@@ -87,8 +89,15 @@ Another question I asked myself was a debate I had with one of my mathematics pr
 After this, I grouped the data by county and determined the average commute time for each mode of transportation (as well as overall average commute time for the county). I was looking through to look for patterns, but I figured it would be easier to use Python to find correlations. With that in mind, I jumped back to Python to see what I could do.
 
 #### Python Findings
-I started with trying to see if there was a correlation with age and commute time. I did this by selecting the age range columns along with the mean travel time column. I then created a correlation heatmap and... there wasn't a clear pattern.
+I started with seeing what correlations existed, if any, between any of the mean travel times. When I did this, I discovered that the mean travel time of those who drove alone was highly correlated with the overall mean travel time: almost 0.99! While I found this interesting, it also made sense to me. Since a vast majority of people who commute drive alone, they have the most influence over the overall mean travel time. As such, this correlation makes sense, but it was interesting to see just how strong the correlation was.
+
+I then tried to see if there was a correlation with age and commute time. I did this by selecting the age range columns along with the mean travel time column. I then created a correlation heatmap and... there wasn't a clear pattern.
 
 I then decided to take the age range of every mode of transportation and correlate it with the mean travel time, but there still wasn't any pattern. From this, I noted that there doesn't seem to be any correlation between the someone's age and the time it takes for them to get to work.
 
 In order to look for other patterns, I grouped the data by year and made a few charts. From these, it was clear to see that the travel time for public transit was consistently higher than every other mode of transportation every single year. Public transit also had the most varying median age of people who used it. Overall, public transit is the black sheep of the modes of transportation. It definitely deserves to be explored a little more.
+
+### Dashboarding
+I first tried Power BI to make a few charts, but I soon determined that I wanted to use maps, which I have more experience with in Tableau, so I switched over to Tableau. From there, I started making heatmaps based on different modes of transport and comparing them (along with a year filter).
+
+However, I did need a few charts, so I started putting together some of charts I made in Python to present.
