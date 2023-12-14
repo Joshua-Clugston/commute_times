@@ -42,20 +42,28 @@ ORDER BY state;
 
 -- Let's explore the relation between mode of transportation and commute time.
 
-SELECT county, ROUND( AVG(workers)::decimal, 2) AS avg_workers, ROUND( AVG(mean_min)::decimal, 2) AS avg_travel_time,
-	   ROUND( AVG(drove_alone_mean_min)::decimal, 2) AS avg_drive_time,
-	   ROUND( AVG(carpooled_mean_min)::decimal, 2) AS avg_carpool_time,
-	   ROUND( AVG(pub_transit_mean_min)::decimal, 2) AS avg_transit_time
-	   /*
-	   ROUND( AVG(drove_alone_10_min)::decimal, 2 ) AS avg_10, ROUND( AVG(drove_alone_10_14_min)::decimal,2 ) AS avg_10_14, 
-	   ROUND( AVG(drove_alone_15_19_min)::decimal,2 ) AS avg_10_19, ROUND( AVG(drove_alone_20_24_min)::decimal,2 ) AS avg_20_24, 
-	   ROUND( AVG(drove_alone_25_29_min)::decimal,2 ) AS avg_25_29, ROUND( AVG(drove_alone_30_34_min)::decimal,2 ) AS avg_20_34, 
-	   ROUND( AVG(drove_alone_35_44_min)::decimal,2 ) AS avg_35_44, ROUND( AVG(drove_alone_45_59_min)::decimal,2 ) AS avg_45_59, 
-	   ROUND( AVG(drove_alone_60_min)::decimal,   2 ) AS avg_60
-	   */
+WITH county_times AS (
+	SELECT county, ROUND( AVG(workers)::decimal, 2) AS avg_workers, ROUND( AVG(mean_min)::decimal, 2) AS avg_travel_time,
+		   ROUND( AVG(drove_alone_mean_min)::decimal, 2) AS avg_drive_time,
+		   ROUND( AVG(carpooled_mean_min)::decimal, 2) AS avg_carpool_time,
+		   ROUND( AVG(pub_transit_mean_min)::decimal, 2) AS avg_transit_time
+		   /*
+		   ROUND( AVG(drove_alone_10_min)::decimal, 2 ) AS avg_10, ROUND( AVG(drove_alone_10_14_min)::decimal,2 ) AS avg_10_14, 
+		   ROUND( AVG(drove_alone_15_19_min)::decimal,2 ) AS avg_10_19, ROUND( AVG(drove_alone_20_24_min)::decimal,2 ) AS avg_20_24, 
+		   ROUND( AVG(drove_alone_25_29_min)::decimal,2 ) AS avg_25_29, ROUND( AVG(drove_alone_30_34_min)::decimal,2 ) AS avg_20_34, 
+		   ROUND( AVG(drove_alone_35_44_min)::decimal,2 ) AS avg_35_44, ROUND( AVG(drove_alone_45_59_min)::decimal,2 ) AS avg_45_59, 
+		   ROUND( AVG(drove_alone_60_min)::decimal,   2 ) AS avg_60
+		   */
+	FROM comm
+	GROUP BY county
+	ORDER BY avg_travel_time DESC NULLS LAST)
+
+SELECT *
+FROM county_times
+WHERE avg_transit_time < avg_travel_time
+ORDER BY avg_transit_time;
+
+SELECT *
 FROM comm
-GROUP BY county
-ORDER BY avg_travel_time DESC NULLS LAST;
-
-
+WHERE county = 'Lapeer County, Michigan';
 
