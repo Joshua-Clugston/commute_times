@@ -2,13 +2,13 @@
 Using data from 2010 through 2022 to determine patterns in travel times to work.
 
 ## Executive Summary
-Traffic is something everyone has encountered, but are there any patterns to how long traveling takes? While traffic is far from optimized in the US, I wanted to investigate if any factors make traffic and commute times better or worse in certain areas. In addition, I also wanted to assess any correlations between commute time and other aspects of a county/state. Data can include (but is not limited to) geospatial data, count of objects by county, population trends, and government provided datasets. I will only be looking at US data as that is my primary focus. Anticipated challenges include loading sufficient data into a legible map, creating filters by time frame, and organizing/cleaning the data to be used.
+Traffic is something everyone has encountered, but are there any patterns to how long traveling takes? While traffic is far from optimized in the US, I wanted to investigate if any factors make traffic and commute times better or worse in certain areas. In addition, I also wanted to assess any correlations between commute time and other aspects of a county/state. I will only be looking at US data as that is my primary focus. Anticipated challenges include loading sufficient data into a legible map, creating filters by time frame, and organizing/cleaning the data to be used.
 
 ## Motivation
 Everyone encounters traffic whenever they need to travel. I wanted to see which states have better travel times and what other elements of a state correlate with commute times. If there are any surprising factors, I would like to dig in and see if there are any explanations for why. From there, I would hope to implement this knowledge to help lower overall travel times across the country in the future.
 
 ## Data Question
-What factors correlate with commute time? To what extent do population and other modes of transportation affect travel times? Which modes of transportation are the most used and which ones yield the shortest commute times? Which states and counties have the most workers who commute?
+What factors correlate with commute time? To what extent do population and other modes of transportation affect travel times? Which modes of transportation are the most used and which ones yield the shortest commute times? Which states and counties have the most workers who commute? Are there trends in commute times by year?
 
 ## Minimum Viable Product (MVP)
 Describe what factors influence commute times the most. Create heat maps based on traffic flow and charts to visualize what elements impact commute time. Can also filter data based on year. Audience would be for traffic engineers, transportation-based companies, and anyone who wants to advocate for shorter commute times.
@@ -21,20 +21,14 @@ Describe what factors influence commute times the most. Create heat maps based o
 5.	Demo Day!! (1/4/2023)
 
 
-
 ## Data Sources
-### My main datasets:
+### My main datasets (that needs to be filtered):
 https://data.census.gov/table/ACSST1Y2010.S0802?q=commute%20time&g=010XX00US$0500000
 
-### Other Possible datasets (if I have time):
-https://cdan.dot.gov/Homepage/MotorVehicleCrashDataOverview.htm
-https://www.bts.gov/topics/national-transportation-statistics
-https://roundabouts.kittelson.com/Roundabouts/Search
-
 ## Known Issues and Challenges
-Will need to convert Census data to csv and slice the data to find correlations.
-Will need to determine how to combine different datasets (if other data is used).
-May need to web-scrape some data from specific sites (namely the roundabouts site)
+Will need to convert Census data to csv and subset the datasets into manageable chunks.
+Will need to determine how to combine subsets of the data and find patterns/trends.
+Will need to change percentages of populations into number of people for aggregation purposes.
 
 
 
@@ -65,7 +59,7 @@ I was on a roll! The next thing I wanted to do was compare these two categories.
 #### PostgresSQL
 While I had all of these tables, I wanted to combine every table from each category into one giant table. So, I added a "Year" column and tried to concat them, but it didn't work. The thing is, not all of the column names matched and some of the dataframe sized were different, which caused issues. So, in order to fix this *and to come up with columns names that would be easy to call in SQL*, I had to overhaul the column names... again.
 
-This took a while. I took the approach of using the string replace method for every phrase I wanted to replace (which sounds nice, but it quickly became tedious). I ended up using the sub regular expressions method for one specific thing since replace wasn't cutting it. If I had to do this part over, I would definitely use regex for as much as possible.
+This took a while. I took the approach of using the string replace method for every phrase I wanted to replace (which sounds nice, but it quickly became tedious). I ended up using the "sub" regular expressions method for one specific thing since replace wasn't cutting it. If I had to do this part over, I would definitely use regex for as much as possible.
 
 Still, I finally was able to line up all the column names and put everything into one table to send to PostgreSQL. Now, I could finally tackle some of the questions I was wondering about in an easy and straightforward approach.
 
@@ -101,3 +95,7 @@ In order to look for other patterns, I grouped the data by year and made a few c
 I first tried Power BI to make a few charts, but I soon determined that I wanted to use maps, which I have more experience with in Tableau, so I switched over to Tableau. From there, I started making heatmaps based on different modes of transport and comparing them (along with a year filter).
 
 However, I did need a few charts, so I started putting together some of charts I made in Python to present.
+
+It was at this time I did a demo presentation for some feedback. After this, I started to overhaul what my presentation would be like (since it was hardly a "presentation" but rather a collection of heatmaps and Python code).
+
+I made a few new charts in Tableau (which took some time since I wasn't familiar with the idea of Measure Values and filtering those), but I was making progress. I just needed to make sure I had some variety and a clear direction for my presentation.
