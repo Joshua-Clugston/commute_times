@@ -12,7 +12,7 @@ SELECT county, state,
 FROM comm
 WHERE year = 2016
 GROUP BY county, state
-ORDER BY workers DESC;
+ORDER BY workers DESC NULLS LAST;
 
 SELECT state, AVG(workers)::int as avg_workers,
 	   ROUND( AVG(mean_min)::decimal,2 ) AS avg_mean_min, ROUND( AVG(drove_alone_mean_min)::decimal,2 ) AS avg_alone_mean_min,
@@ -67,3 +67,8 @@ SELECT *
 FROM comm
 WHERE county = 'Lapeer County, Michigan';
 
+SELECT ROUND(AVG(mean_min::decimal),2) AS avg_travel_time
+FROM comm;
+
+SELECT ROUND(AVG(median_age::decimal),2) AS avg_age
+FROM age;
