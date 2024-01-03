@@ -47,14 +47,14 @@ The first major roadblock I came across was how the data was shown. It gave most
 
 In order to find a way around this, I found the work force size for each county (which was already present in the original dataset) and used those numbers to multiply to the percentages, giving me a raw number of how many people were taking which mode of transportation.
 
-Now, this procedure had only been done on one dataset (the one from 2021), but now I needed to do it on every dataset. So, I created a function to do the whole process in one go... except I soon realized that there was a clear distinction between table before and after 2018. The order of the columns and how they were named differed, so I needed to account for that in my function. After much hassle, I got it to work.
+Now, this procedure had only been done on one dataset (the one from 2021), but now I needed to do it on every dataset. So, I created a function to do the whole process in one go... except I soon realized that there was a clear distinction between tables before and after 2018. The order of the columns and how they were named differed, so I needed to account for that in my function. After much hassle, I got it to work.
 
 So with cleaned-up commute time tables, how hard could another category be?
 
 #### Age
 These tables had their own problems, but I was now well equiped to solve them. Once again, there was a difference between the tables before and after 2018, so I was able to work with that knowledge from the get-go. As such, the process went very smoothly (especially since I had already done the hard work of translating percentages to integers).
 
-I was on a roll! The next thing I wanted to do was compare these two categories. But before I could do that, I wanted to get these tables into PostgreSQL since SQL could easily answer the questions I had asked for this project.
+I was on a roll! The next thing I wanted to do was compare these two categories. But before I could do that, I wanted to get these tables into PostgreSQL since SQL could easily answer some of the questions I had asked for this project.
 
 #### PostgresSQL
 While I had all of these tables, I wanted to combine every table from each category into one giant table. So, I added a "Year" column and tried to concat them, but it didn't work. The thing is, not all of the column names matched and some of the dataframe sized were different, which caused issues. So, in order to fix this *and to come up with columns names that would be easy to call in SQL*, I had to overhaul the column names... again.
@@ -99,3 +99,7 @@ However, I did need a few charts, so I started putting together some of charts I
 It was at this time I did a demo presentation for some feedback. After this, I started to overhaul what my presentation would be like (since it was hardly a "presentation" but rather a collection of heatmaps and Python code).
 
 I made a few new charts in Tableau (which took some time since I wasn't familiar with the idea of Measure Values and filtering those), but I was making progress. I just needed to make sure I had some variety and a clear direction for my presentation.
+
+Finally, I got around to finishing it. I had to make some adjustments to the Tableau data source and the Python code, but in the end, I had successfully transfered all the graphs I needed and was able to give some analysis.
+
+## That's All Folks!
